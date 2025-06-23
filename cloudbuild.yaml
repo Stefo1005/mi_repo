@@ -9,7 +9,7 @@ steps:
         '.',
       ]
 
-  # 2) Desplegar en Cloud Run (región us-central1 como ejemplo)
+  # 2) Desplegar en Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       [
@@ -24,5 +24,10 @@ steps:
         'managed',
         '--allow-unauthenticated',
       ]
+
 images:
   - 'gcr.io/$PROJECT_ID/chatbot-predictivo:$SHORT_SHA'
+
+# <-- Agrega esto al final para usar solo Cloud Logging y evitar el requisito de bucket
+options:
+  logging: CLOUD_LOGGING_ONLY
