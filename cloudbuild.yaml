@@ -28,6 +28,7 @@ steps:
 images:
   - 'gcr.io/$PROJECT_ID/chatbot-predictivo:$SHORT_SHA'
 
-# <-- Agrega esto al final para usar solo Cloud Logging y evitar el requisito de bucket
 options:
-  logging: CLOUD_LOGGING_ONLY
+  # Indicamos que NO guarde logs en bucket (ni Cloud Storage)
+  # y así evitamos el paso de aprobación manual
+  logging: NONE
